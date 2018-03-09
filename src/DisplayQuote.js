@@ -17,7 +17,7 @@ class DisplayQuote extends Component {
   render() {
     return <div>
       <button onClick={this.onButtonClick}>Edit</button>
-      <EditQuote show={this.state.showComponent} data={this.props.quote}/>
+      <EditQuote refs={this.props.quote._id} show={this.state.showComponent} data={this.props.quote}/>
      {this.props.quote.data.split('\n').map((el, key) => <span key={key}>{el}<br/></span>)}
    </div>
   }
