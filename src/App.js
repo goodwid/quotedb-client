@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import DisplayQuote from './DisplayQuote';
 
 class App extends Component {
   constructor() {
@@ -21,25 +22,11 @@ class App extends Component {
       <div className="App">
         <div>
           <p>Quotes are here: </p>
-          {this.state.quotes.map(item => <DisplayQuote key={item._id} data={item}/>)}
+          {this.state.quotes.map(item => <DisplayQuote key={item._id} quote={item}/>)}
         </div>
       </div>
     );
   }
 }
 
-function DisplayQuote(props) {
-  return <div>
-    {props.data.data.split('\n').map((el, key) => <span key={key}>{el}<br/></span>)}
-  </div>
-}
-
 export default App;
-
-// return <li key={item._id}>
-//               { 
-//                 item.data
-//                 .split('\n')
-//                 .map(el => <span>{el}<br/></span>)
-//               }
-//             </li>
