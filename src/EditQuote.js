@@ -11,6 +11,7 @@ class EditQuote extends Component {
     this.handleDataChange = this.handleDataChange.bind(this);
     this.handleMovieChange = this.handleMovieChange.bind(this);
     this.submitData = this.submitData.bind(this);
+    this.deleteData = this.deleteData.bind(this);
   }
   handleDataChange(e) {
     let newQuote = this.state.quote;
@@ -37,6 +38,16 @@ class EditQuote extends Component {
       .then(res => console.log(res))
       .catch(err => console.log(err));
   }
+  deleteData() {
+    ReactDOM.findDOMNode(this).style.display = 'none';
+    let id = this.state.quote._id;
+    let options = {
+      method: 'DELETE'
+    };
+    fetch(`http://localhost:9000/api/quotedb/v1/quotes/${id}`, options)
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+  }
   render() {
     let quote = this.state.quote;
     let style = this.props.show ? {} : {display: 'none'};
@@ -44,6 +55,7 @@ class EditQuote extends Component {
       <textarea refs="data" defaultValue={quote.data} onChange={this.handleDataChange}/><br/>
       <input refs="movie" defaultValue={quote.movie} onChange={this.handleMovieChange}/><br/>
       <button onClick={this.submitData}>Submit Changes</button>
+      <button onClick={this.deleteData}>Delete entry</button>
     </div>
   }
 }
