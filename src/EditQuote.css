@@ -1,0 +1,12 @@
+.label {
+  margin: 0 40px 0 10px;
+}
+
+textarea {
+  width: 500px;
+  height: 6em;
+}
+
+input {
+  width: 500px;
+}

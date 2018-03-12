@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import './EditQuote.css';
 
 class EditQuote extends Component {
   constructor(props) {
@@ -52,10 +53,10 @@ class EditQuote extends Component {
     let quote = this.state.quote;
     let style = this.props.show ? {} : {display: 'none'};
     return <div style={style}>
-      <textarea refs="data" defaultValue={quote.data} onChange={this.handleDataChange}/><br/>
-      <input refs="movie" defaultValue={quote.movie} onChange={this.handleMovieChange}/><br/>
-      <button onClick={this.submitData}>Submit Changes</button>
+      <span className="label">Quote data: </span><textarea className="edittext" refs="data" defaultValue={quote.data} onChange={this.handleDataChange}/><br/>
+      <span className="label">Movie: </span><input refs="movie" defaultValue={quote.movie} onChange={this.handleMovieChange}/><br/>
       <button onClick={this.deleteData}>Delete entry</button>
+      <button onClick={this.submitData}>Submit Changes</button>
     </div>
   }
 }

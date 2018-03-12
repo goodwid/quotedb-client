@@ -1,25 +1,33 @@
 import React, { Component } from 'react';
 import EditQuote from './EditQuote';
+import './DisplayQuote.css';
 
 class DisplayQuote extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showComponent: false
+      showEditQuote: false
     };
-    this.onButtonClick = this.onButtonClick.bind(this);
+    this.onEditClick = this.onEditClick.bind(this);
+    
   }
-  onButtonClick() {
+  onEditClick() {
     this.setState({
-      showComponent: !this.state.showComponent
+      showEditQuote: !this.state.showEditQuote
     });
   }
+ 
   render() {
-    return <div>
-      <button onClick={this.onButtonClick}>Edit</button>
-      <EditQuote refs={this.props.quote._id} show={this.state.showComponent} data={this.props.quote}/>
-     {this.props.quote.data.split('\n').map((el, key) => <span key={key}>{el}<br/></span>)}
-   </div>
+    return (
+    <div className="quote">
+      <div>
+        {this.props.quote.data.split('\n').map((el, key) => <span key={key}>{el}<br/></span>)}
+        <button className="quoteButton" onClick={this.onEditClick}>Edit</button>
+      </div>
+      <EditQuote refs={this.props.quote._id} show={this.state.showEditQuote} data={this.props.quote}/>
+      <hr/>
+    </div> 
+    )
   }
 }
 
