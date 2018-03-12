@@ -55,8 +55,8 @@ class EditQuote extends Component {
     return <div style={style}>
       <span className="label">Quote data: </span><textarea className="edittext" refs="data" defaultValue={quote.data} onChange={this.handleDataChange}/><br/>
       <span className="label">Movie: </span><input refs="movie" defaultValue={quote.movie} onChange={this.handleMovieChange}/><br/>
-      <button onClick={this.deleteData}>Delete entry</button>
       <button onClick={this.submitData}>Submit Changes</button>
+      <button onClick={this.deleteData}>Delete entry</button>
     </div>
   }
 }
