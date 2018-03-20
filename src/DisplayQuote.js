@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import EditQuote from './EditQuote';
 import './DisplayQuote.css';
 
+
 class DisplayQuote extends Component {
   constructor(props) {
     super(props);

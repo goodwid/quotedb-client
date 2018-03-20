@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import DisplayQuote from './DisplayQuote';
 import AddQuote from './AddQuote';
+import qs from './quoteServer.js';
 
 class App extends Component {
   constructor() {
@@ -13,8 +14,7 @@ class App extends Component {
     this.onAddClick = this.onAddClick.bind(this);
   }
   componentDidMount() {
-    fetch('http://localhost:9000/api/quotedb/v1/quotes')
-      .then(results => results.json())
+    qs.getAll()
       .then(data => {
         let quotes = data;
         this.setState({quotes});

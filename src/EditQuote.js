@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './EditQuote.css';
+import qs from './quoteServer.js';
 
 class EditQuote extends Component {
   constructor(props) {
@@ -27,25 +28,14 @@ class EditQuote extends Component {
   submitData() {
     ReactDOM.findDOMNode(this).style.display = 'none';
     let id = this.state.quote._id;
-    let body = JSON.stringify(this.state.quote);
-    let options = {
-      method: 'PUT',
-      body,
-      headers: new Headers({
-        'Content-Type':'application/json'
-      })
-    };
-    fetch(`http://localhost:9000/api/quotedb/v1/quotes/${id}`, options)
+    qs.edit(id, this.state.quote)
       .then(res => console.log(res))
-      .catch(err => console.log(err));
+      .catch(err => console.error(err));
   }
   deleteData() {
     ReactDOM.findDOMNode(this).style.display = 'none';
     let id = this.state.quote._id;
-    let options = {
-      method: 'DELETE'
-    };
-    fetch(`http://localhost:9000/api/quotedb/v1/quotes/${id}`, options)
+    qs.delete(id)
       .then(res => console.log(res))
       .catch(err => console.log(err));
   }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import qs from './quoteServer.js';
 
 class AddQuote extends Component {
   constructor(props) {
@@ -23,15 +24,7 @@ class AddQuote extends Component {
   }
   submitData() {
     ReactDOM.findDOMNode(this).style.display = 'none';
-    let body = JSON.stringify(this.state.quote);
-    let options = {
-      method: 'POST',
-      body,
-      headers: new Headers({
-        'Content-Type':'application/json'
-      })
-    };
-    fetch('http://localhost:9000/api/quotedb/v1/quotes/', options)
+    qs.create(this.state.quote)
       .then(res => console.log(res))
       .catch(err => console.log(err));
   }
