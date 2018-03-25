@@ -37,6 +37,6 @@ class AddQuote extends Component {
     <button onClick={this.submitData}>Submit Changes</button>
   </div>
   }
-}
+};
 
-export default AddQuote
+export default AddQuote;

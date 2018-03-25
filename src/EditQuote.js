@@ -27,15 +27,13 @@ class EditQuote extends Component {
   }
   submitData() {
     ReactDOM.findDOMNode(this).style.display = 'none';
-    let id = this.state.quote._id;
-    qs.edit(id, this.state.quote)
+    qs.edit(this.state.quite._id, this.state.quote)
       .then(res => console.log(res))
       .catch(err => console.error(err));
   }
   deleteData() {
     ReactDOM.findDOMNode(this).style.display = 'none';
-    let id = this.state.quote._id;
-    qs.delete(id)
+    qs.delete(this.state.quote._id)
       .then(res => console.log(res))
       .catch(err => console.log(err));
   }
