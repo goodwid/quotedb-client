@@ -27,7 +27,7 @@ class EditQuote extends Component {
   }
   submitData() {
     ReactDOM.findDOMNode(this).style.display = 'none';
-    qs.edit(this.state.quite._id, this.state.quote)
+    qs.edit(this.state.quote._id, this.state.quote)
       .then(res => console.log(res))
       .catch(err => console.error(err));
   }
